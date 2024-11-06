@@ -1,25 +1,17 @@
 <template>
-  <div id="app">
-    <span>Hello Vue.JS</span>
-
-    <hr />
-
-    <first-component />
+  <div class="wrapper">
+    <hero-view />
+    <footer-component />
   </div>
 </template>
 
 <script>
-import FirstComponent from './components/FirstComponent.vue';
+import HeroView from '@/views/HeroView.vue';
+import FooterComponent from '@/components/FooterComponent.vue';
 
 export default {
-  components: { FirstComponent },
+  components: { HeroView, FooterComponent },
 };
 </script>
 
-<style lang="scss" scoped>
-div {
-  span {
-    color: green;
-  }
-}
-</style>
+<style></style>
