@@ -94,9 +94,8 @@
 
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
-import CardItemComponent from '@/components/CardItemComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent },
+  components: { NavBarComponent },
 };
 </script>

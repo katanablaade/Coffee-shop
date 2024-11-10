@@ -92,5 +92,29 @@ import CardItemComponent from '@/components/CardItemComponent.vue';
 
 export default {
   components: { NavBarComponent, CardItemComponent },
+  data() {
+    return {
+      links: [
+        {
+          id: 0,
+          text: 'Solimo Coffee Beans 2kg',
+          price: '10.73$',
+          link: 'coffee-1.jpg',
+        },
+        {
+          id: 1,
+          text: 'Presto Coffee Beans 1kg',
+          price: '15.99$',
+          link: 'coffee-2.jpg',
+        },
+        {
+          id: 2,
+          text: 'AROMISTICO Coffee 1kg',
+          price: '6.99$',
+          link: 'coffee-3.jpg',
+        },
+      ],
+    };
+  },
 };
 </script>
