@@ -7,7 +7,8 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <titlle-views-component :text="title" />
+        <!-- <h1 class="title-big">Our Coffee</h1> -->
       </div>
     </div>
     <section class="shop">
@@ -69,12 +70,42 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[0].name"
+                :price="coffe[0].price"
+                :image="coffe[0].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[1].name"
+                :price="coffe[1].price"
+                :image="coffe[1].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[2].name"
+                :price="coffe[2].price"
+                :image="coffe[2].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[3].name"
+                :price="coffe[3].price"
+                :image="coffe[3].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[4].name"
+                :price="coffe[4].price"
+                :image="coffe[4].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="coffe[5].name"
+                :price="coffe[5].price"
+                :image="coffe[5].image"
+              />
             </div>
           </div>
         </div>
@@ -86,9 +117,10 @@
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
+import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent },
+  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
   data() {
     return {
       coffe: [
@@ -135,6 +167,7 @@ export default {
           image: 'coffee-3.jpg',
         },
       ],
+      title: 'Our Coffee',
     };
   },
 };

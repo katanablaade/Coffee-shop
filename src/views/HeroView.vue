@@ -9,7 +9,8 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <h1 class="title-big">Everything You Love About Coffee</h1>
+            <titlle-views-component :text="title" />
+            <!-- <h1 class="title-big">Everything You Love About Coffee</h1> -->
             <img
               class="beanslogo"
               src="@/assets/logo/Beans_logo.svg"
@@ -60,24 +61,24 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="best__wrapper">
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <!-- <div class="best__item">
-                <img src="@/assets/img/coffee-1.jpg" alt="coffee" />
-                <div class="best__item-title">Solimo Coffee Beans 2kg</div>
-                <div class="best__item-price">10.73$</div>
-              </div>
-              <div class="best__item">
-                <img src="@/assets/img/coffee-2.jpg" alt="coffee" />
-                <div class="best__item-title">Presto Coffee Beans 1kg</div>
-                <div class="best__item-price">15.99$</div>
-              </div>
-              <div class="best__item">
-                <img src="@/assets/img/coffee-3.jpg" alt="coffee" />
-                <div class="best__item-title">AROMISTICO Coffee 1kg</div>
-                <div class="best__item-price">6.99$</div>
-              </div> -->
+              <card-item-component
+                classItem="best__item"
+                :name="bestsellers[0].name"
+                :price="bestsellers[0].price"
+                :image="bestsellers[0].image"
+              />
+              <card-item-component
+                classItem="best__item"
+                :name="bestsellers[1].name"
+                :price="bestsellers[1].price"
+                :image="bestsellers[1].image"
+              />
+              <card-item-component
+                classItem="best__item"
+                :name="bestsellers[2].name"
+                :price="bestsellers[2].price"
+                :image="bestsellers[2].image"
+              />
             </div>
           </div>
         </div>
@@ -89,9 +90,10 @@
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
+import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent },
+  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
   data() {
     return {
       bestsellers: [
@@ -114,6 +116,7 @@ export default {
           image: 'coffee-3.jpg',
         },
       ],
+      title: 'Everything You Love About Coffee',
     };
   },
 };

@@ -7,7 +7,8 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">Thank you</h1>
+        <titlle-views-component :text="title" />
+        <!-- <h1 class="title-big">Thank you</h1> -->
       </div>
     </div>
     <section class="contacts">
@@ -39,8 +40,14 @@
 
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
+import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
-  components: { NavBarComponent },
+  components: { NavBarComponent, TitlleViewsComponent },
+  data() {
+    return {
+      title: 'Thank you',
+    };
+  },
 };
 </script>

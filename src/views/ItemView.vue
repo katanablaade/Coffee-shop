@@ -7,7 +7,8 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">Our Coffee</h1>
+        <titlle-views-component :text="title" />
+        <!-- <h1 class="title-big">Our Coffee</h1> -->
       </div>
     </div>
 
@@ -53,8 +54,14 @@
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
+import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent },
+  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
+  data() {
+    return {
+      title: 'Our Coffee',
+    };
+  },
 };
 </script>

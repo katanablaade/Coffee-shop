@@ -11,21 +11,31 @@
           />
         </router-link>
       </li>
-      <li class="header__item">
-        <router-link :to="links[1].link">{{ links[1].text }}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[2].link">{{ links[2].text }}</router-link>
-      </li>
-      <li class="header__item">
-        <router-link :to="links[3].link">{{ links[3].text }}</router-link>
-      </li>
+      <link-views-component
+        classItem="header__item"
+        :text="links[1].text"
+        :link="links[1].link"
+      />
+      <link-views-component
+        classItem="header__item"
+        :text="links[2].text"
+        :link="links[2].link"
+      />
+      <link-views-component
+        classItem="header__item"
+        :text="links[3].text"
+        :link="links[3].link"
+      />
     </ul>
   </header>
 </template>
 
 <script>
+import LinkViewsComponent from './LinkViewsComponent.vue';
+
 export default {
+  components: { LinkViewsComponent },
+
   data() {
     return {
       links: [

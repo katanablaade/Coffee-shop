@@ -7,7 +7,8 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">For your pleasure</h1>
+        <titlle-views-component :text="title" />
+        <!-- <h1 class="title-big">For your pleasure</h1> -->
       </div>
     </div>
     <section class="shop">
@@ -48,12 +49,42 @@
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
-              <card-item-component />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[0].name"
+                :price="goods[0].price"
+                :image="goods[0].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[1].name"
+                :price="goods[1].price"
+                :image="goods[1].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[2].name"
+                :price="goods[2].price"
+                :image="goods[2].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[3].name"
+                :price="goods[3].price"
+                :image="goods[3].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[4].name"
+                :price="goods[4].price"
+                :image="goods[4].image"
+              />
+              <card-item-component
+                classItem="shop__item"
+                :name="goods[5].name"
+                :price="goods[5].price"
+                :image="goods[5].image"
+              />
             </div>
           </div>
         </div>
@@ -65,9 +96,10 @@
 <script>
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
+import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent },
+  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
   data() {
     return {
       goods: [
@@ -114,6 +146,7 @@ export default {
           image: 'good-1.jpg',
         },
       ],
+      title: 'For your pleasure',
     };
   },
 };
