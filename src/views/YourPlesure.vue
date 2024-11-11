@@ -70,48 +70,48 @@ export default {
   components: { NavBarComponent, CardItemComponent },
   data() {
     return {
-      links: [
+      goods: [
         {
           id: 0,
-          text: 'Solimo Coffee Beans 2kg',
+          name: 'Solimo Coffee Beans 2kg',
           price: '10.73$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
         {
           id: 1,
-          text: 'Presto Coffee Beans 1kg',
+          name: 'Presto Coffee Beans 1kg',
           price: '15.99$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
         {
           id: 2,
-          text: 'AROMISTICO Coffee 1kg',
+          name: 'AROMISTICO Coffee 1kg',
           price: '6.99$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
         {
           id: 3,
-          text: 'Solimo Coffee Beans 2kg',
+          name: 'Solimo Coffee Beans 2kg',
           price: '10.73$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
         {
           id: 4,
-          text: 'Solimo Coffee Beans 2kg',
+          name: 'Solimo Coffee Beans 2kg',
           price: '10.73$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
         {
           id: 5,
-          text: 'Solimo Coffee Beans 2kg',
+          name: 'Solimo Coffee Beans 2kg',
           price: '10.73$',
           country: 'Brazil',
-          link: 'good-1.jpg',
+          image: 'good-1.jpg',
         },
       ],
     };
