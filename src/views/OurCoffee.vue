@@ -71,7 +71,7 @@
           <div class="col-lg-10 offset-lg-1">
             <div class="shop__wrapper">
               <card-item-component
-                v-for="card in coffe"
+                v-for="card in coffee"
                 :key="card.id"
                 classItem="shop__item"
                 :name="card.name"
@@ -95,7 +95,7 @@ export default {
   components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
   data() {
     return {
-      coffe: [
+      coffee: [
         {
           id: 0,
           name: 'Solimo Coffee Beans 2kg',
