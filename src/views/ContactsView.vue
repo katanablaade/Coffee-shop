@@ -8,7 +8,6 @@
           </div>
         </div>
         <titlle-views-component :text="title" />
-        <!-- <h1 class="title-big">Contact us</h1> -->
       </div>
     </div>
     <section class="contacts">
