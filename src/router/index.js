@@ -15,6 +15,16 @@ const routes = [
   { path: '/your-plesure', component: () => import('../views/YourPlesure') },
   { path: '/contacts', component: () => import('../views/ContactsView') },
   { path: '/thanks', component: () => import('../views/ThanksView') },
+  {
+    name: 'coffee',
+    path: '/our-coffee/:id',
+    component: () => import('../views/ItemView'),
+  },
+  {
+    name: 'goods',
+    path: '/your-plesure/:id',
+    component: () => import('../views/ItemView'),
+  },
 ];
 
 const router = new VueRouter({
