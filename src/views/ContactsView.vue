@@ -7,7 +7,8 @@
             <nav-bar-component />
           </div>
         </div>
-        <titlle-views-component :text="title" />
+        <h1 class="title-big">Contact us</h1>
+        <!-- <titlle-views-component :text="title" /> -->
       </div>
     </div>
     <section class="contacts">
@@ -31,7 +32,7 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.name"
+                    v-model="name"
                     type="text"
                     class="form-control"
                     id="name-input"
@@ -48,7 +49,7 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.email"
+                    v-model="email"
                     type="email"
                     class="form-control"
                     id="email-input"
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col col-12 col-sm-9">
                   <input
-                    v-model="form.phone"
+                    v-model="phone"
                     type="tel"
                     class="form-control"
                     id="phone-input"
@@ -79,7 +80,7 @@
                 </div>
                 <div class="col col-12">
                   <textarea
-                    v-model="form.message"
+                    v-model="message"
                     class="form-control"
                     name="message"
                     id="message"
@@ -113,17 +114,14 @@ export default {
   data() {
     return {
       title: 'Contact us',
-      form: {
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-      },
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
     };
   },
   methods: {
     submit() {
-      console.log(this.form);
       this.$router.push('/thanks');
     },
   },
