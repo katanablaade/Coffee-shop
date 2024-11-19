@@ -38,6 +38,9 @@
                     id="name-input"
                   />
                 </div>
+                <!-- <pre>
+                  {{ v$ }}
+                </pre> -->
               </div>
 
               <div class="form-group row">
@@ -109,11 +112,25 @@
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
+import { useVuelidate } from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+
 export default {
   components: { NavBarComponent, TitlleViewsComponent },
+  setup() {
+    return { v$: useVuelidate() };
+  },
   data() {
     return {
       title: 'Contact us',
+      name: { required },
+      email: { required, email },
+      phone: { required },
+      message: {},
+    };
+  },
+  validations() {
+    return {
       name: '',
       email: '',
       phone: '',
