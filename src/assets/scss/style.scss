@@ -38,6 +38,11 @@ body {
 .shop__girl {
   width: 100%;
 }
+.qwe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @import 'header';
 @import 'mainpage';

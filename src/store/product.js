@@ -6,10 +6,16 @@ const product = {
     setProductData(state, data) {
       state.product = data;
     },
+    setProductRemove(state) {
+      state.product = null;
+    },
   },
   actions: {
     setProductData({ commit }, data) {
       commit('setProductData', data);
+    },
+    setProductRemove({ commit }) {
+      commit('setProductRemove');
     },
   },
   getters: {

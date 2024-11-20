@@ -44,7 +44,9 @@
         </div>
       </div>
     </section>
-    <spinner-component v-else></spinner-component>
+    <div v-else class="qwe">
+      <spinner-component></spinner-component>
+    </div>
   </main>
 </template>
 
@@ -80,7 +82,9 @@ export default {
   },
 
   destroyed() {
-    this.$store.product = null;
+    this.$store.dispatch('setProductRemove');
+
+    // this.$store.product = null;
   },
   computed: {
     pageName() {

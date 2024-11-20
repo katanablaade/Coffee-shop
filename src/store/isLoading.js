@@ -8,8 +8,8 @@ const isLoading = {
     },
   },
   actions: {
-    setIsLoading({ commit }, data) {
-      commit('setIsLoading', data);
+    setIsLoading({ commit }) {
+      commit('setIsLoading');
     },
   },
   getters: {
