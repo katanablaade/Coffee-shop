@@ -195,6 +195,11 @@ export default {
         },
         body: JSON.stringify(message),
       });
+
+      this.name = '';
+      this.email = '';
+      this.phone = '';
+      this.message = '';
     },
   },
 };
