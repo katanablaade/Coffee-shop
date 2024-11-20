@@ -6,6 +6,7 @@ import bestsellers from './bestsellers';
 import coffee from './coffee';
 import goods from './goods';
 import product from './product';
+import isLoading from './isLoading';
 
 Vue.use(Vuex);
 
@@ -16,6 +17,7 @@ const store = new Vuex.Store({
     coffee,
     goods,
     product,
+    isLoading,
   },
 });
 

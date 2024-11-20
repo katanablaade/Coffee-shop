@@ -10,12 +10,12 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big" v-if="product">{{ product.name }}</h1>
-        <!-- <titlle-views-component :text="title" /> -->
+        <h1 class="title-big" v-if="product">
+          {{ product.name }}
+        </h1>
       </div>
     </div>
-
-    <section class="shop" v-if="product">
+    <section class="shop" v-if="product && isLoading === false">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 offset-1">
@@ -44,6 +44,7 @@
         </div>
       </div>
     </section>
+    <spinner-component v-else></spinner-component>
   </main>
 </template>
 
@@ -51,16 +52,33 @@
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
 import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
+import SpinnerComponent from '@/components/SpinnerComponent.vue';
 
 export default {
-  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
-  mounted() {
-    fetch(`http://localhost:3000/${this.$route.name}/${this.$route.params.id}`)
-      .then((res) => res.json())
-      .then((data) => {
-        this.$store.dispatch('setProductData', data);
-      });
+  components: {
+    NavBarComponent,
+    CardItemComponent,
+    TitlleViewsComponent,
+    SpinnerComponent,
   },
+  mounted() {
+    try {
+      this.$store.isLoading = true;
+      fetch(
+        `http://localhost:3000/${this.$route.name}/${this.$route.params.id}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setProductData', data);
+        });
+      this.$store.isLoading = false;
+    } catch (error) {
+      throw new Error('Ошибка получения данных', error);
+    } finally {
+      this.$store.isLoading = false;
+    }
+  },
+
   destroyed() {
     this.$store.product = null;
   },
@@ -70,6 +88,9 @@ export default {
     },
     product() {
       return this.$store.getters['getProduct'];
+    },
+    isLoading() {
+      return this.$store.getters['getIsLoading'];
     },
   },
 };
