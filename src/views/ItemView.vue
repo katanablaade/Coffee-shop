@@ -10,20 +10,16 @@
             <nav-bar-component />
           </div>
         </div>
-        <h1 class="title-big">{{ card.name }}</h1>
+        <h1 class="title-big" v-if="product">{{ product.name }}</h1>
         <!-- <titlle-views-component :text="title" /> -->
       </div>
     </div>
 
-    <section class="shop">
+    <section class="shop" v-if="product">
       <div class="container">
         <div class="row">
           <div class="col-lg-5 offset-1">
-            <img
-              class="shop__girl"
-              :src="require(`@/assets/img/${card.image}`)"
-              alt="coffee_item"
-            />
+            <img class="shop__girl" alt="coffee_item" :src="product.image" />
           </div>
           <div class="col-lg-4">
             <div class="title">About it</div>
@@ -33,21 +29,16 @@
               alt="Beans logo"
             />
             <div class="shop__point">
-              <span>Country:</span>
-              Brazil
+              <span v-if="product.country">Country:</span>
+              {{ product.country }}
             </div>
             <div class="shop__point">
-              <span>Description:</span>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              <span v-if="product.description">Description:</span>
+              {{ product.description }}
             </div>
             <div class="shop__point">
               <span>Price: </span>
-              <span class="shop__point-price">{{
-                card.price | addCurrency
-              }}</span>
+              <span class="shop__point-price">{{ product.price }}</span>
             </div>
           </div>
         </div>
@@ -66,7 +57,18 @@ export default {
   data() {
     return {
       title: 'Our Coffee',
+      product: null,
     };
+  },
+  mounted() {
+    fetch(`http://localhost:3000/${this.$route.name}/${this.$route.params.id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        this.product = data;
+      });
+  },
+  destroyed() {
+    this.product = null;
   },
   computed: {
     pageName() {
