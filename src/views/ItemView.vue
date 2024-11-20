@@ -54,31 +54,22 @@ import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
 
 export default {
   components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
-  data() {
-    return {
-      title: 'Our Coffee',
-      product: null,
-    };
-  },
   mounted() {
     fetch(`http://localhost:3000/${this.$route.name}/${this.$route.params.id}`)
       .then((res) => res.json())
       .then((data) => {
-        this.product = data;
+        this.$store.dispatch('setProductData', data);
       });
   },
   destroyed() {
-    this.product = null;
+    this.$store.product = null;
   },
   computed: {
     pageName() {
       return this.$route.name;
     },
-    card() {
-      const pageGetter =
-        this.pageName === 'coffee' ? 'getCoffeeById' : 'getGoodsById';
-      return this.$store.getters[pageGetter](this.$route.params.id);
-      // this.$store.getters['getProductById'](this.$route.params.id);
+    product() {
+      return this.$store.getters['getProduct'];
     },
   },
 };
