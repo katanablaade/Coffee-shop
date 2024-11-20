@@ -7,7 +7,6 @@
             <nav-bar-component />
           </div>
         </div>
-        <!-- <h1 class="title-big">Contact us</h1> -->
         <titlle-views-component :text="title" />
       </div>
     </div>

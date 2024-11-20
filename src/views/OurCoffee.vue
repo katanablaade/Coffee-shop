@@ -84,7 +84,6 @@
                 :card="card"
                 @onNavigate="navigate"
               />
-              <!-- /our-coffee/item -->
             </div>
           </div>
         </div>
