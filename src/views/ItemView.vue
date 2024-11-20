@@ -66,9 +66,7 @@ export default {
   mounted() {
     try {
       this.$store.isLoading = true;
-      fetch(
-        `http://localhost:3000/${this.$route.name}/${this.$route.params.id}`
-      )
+      fetch(`http://localhost:3000/${this.pageName}/${this.$route.params.id}`)
         .then((res) => res.json())
         .then((data) => {
           this.$store.dispatch('setProductData', data);
@@ -83,8 +81,6 @@ export default {
 
   destroyed() {
     this.$store.dispatch('setProductRemove');
-
-    // this.$store.product = null;
   },
   computed: {
     pageName() {
