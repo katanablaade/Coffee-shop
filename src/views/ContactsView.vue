@@ -187,13 +187,16 @@ export default {
         phone: this.phone,
         message: this.message,
       };
-      fetch('http://localhost:3000/contacts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(message),
-      });
+      fetch(
+        'https://my-json-server.typicode.com/katanablaade/Coffee-back/contacts',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(message),
+        }
+      );
 
       this.name = '';
       this.email = '';

@@ -85,7 +85,7 @@ export default {
   },
   mixins: [navigate],
   mounted() {
-    fetch('http://localhost:3000/goods')
+    fetch('https://my-json-server.typicode.com/katanablaade/Coffee-back/goods')
       .then((res) => res.json())
       .then((data) => {
         this.$store.dispatch('setGoodsData', data);

@@ -107,7 +107,9 @@ export default {
     },
   },
   mounted() {
-    fetch('http://localhost:3000/bestsellers')
+    fetch(
+      'https://my-json-server.typicode.com/katanablaade/Coffee-back/bestsellers'
+    )
       .then((res) => res.json())
       .then((data) => {
         this.$store.dispatch('setBestsellersData', data);

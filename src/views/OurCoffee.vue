@@ -123,7 +123,7 @@ export default {
   },
   mixins: [navigate],
   mounted() {
-    fetch('http://localhost:3000/coffee')
+    fetch('https://my-json-server.typicode.com/katanablaade/Coffee-back/coffee')
       .then((res) => res.json())
       .then((data) => {
         this.$store.dispatch('setCoffeeData', data);
@@ -134,7 +134,9 @@ export default {
       this.onSort(this.searchValue);
     }, 500),
     onSort(value) {
-      fetch(`http://localhost:3000/coffee?q=${value}`)
+      fetch(
+        `https://my-json-server.typicode.com/katanablaade/Coffee-back/coffee?q=${value}`
+      )
         .then((res) => res.json())
         .then((data) => {
           this.$store.dispatch('setCoffeeData', data);

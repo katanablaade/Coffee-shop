@@ -66,7 +66,9 @@ export default {
   mounted() {
     try {
       this.$store.isLoading = true;
-      fetch(`http://localhost:3000/${this.pageName}/${this.$route.params.id}`)
+      fetch(
+        `https://my-json-server.typicode.com/katanablaade/Coffee-back/${this.pageName}/${this.$route.params.id}`
+      )
         .then((res) => res.json())
         .then((data) => {
           this.$store.dispatch('setProductData', data);
