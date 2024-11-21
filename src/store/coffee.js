@@ -1,6 +1,6 @@
 const coffee = {
   state: {
-    coffee: [],
+    coffee: null,
     searchValue: '',
     sortValue: '',
   },

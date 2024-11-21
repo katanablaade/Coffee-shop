@@ -102,7 +102,7 @@
   height: 200px;
   display: inline-block;
   overflow: hidden;
-  background: #ffffff;
+  background: none;
 }
 .ldio-yzaezf3dcmj {
   width: 100%;

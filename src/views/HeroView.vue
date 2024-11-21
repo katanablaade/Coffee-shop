@@ -64,13 +64,16 @@
         <div class="title" ref="ourBest">Our best</div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="best__wrapper">
+            <div v-if="bestsellers" class="best__wrapper">
               <card-item-component
                 v-for="card in bestsellers"
                 :key="card.id"
                 classItem="best__item"
                 :card="card"
               />
+            </div>
+            <div v-else class="qwe">
+              <spinner-component></spinner-component>
             </div>
           </div>
         </div>
@@ -83,11 +86,17 @@
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
 import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
+import SpinnerComponent from '@/components/SpinnerComponent.vue';
 
 import { scrollIntoView } from 'seamless-scroll-polyfill';
 
 export default {
-  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
+  components: {
+    NavBarComponent,
+    CardItemComponent,
+    TitlleViewsComponent,
+    SpinnerComponent,
+  },
   data() {
     return {
       title: 'Everything You Love About Coffee',
@@ -96,6 +105,9 @@ export default {
   computed: {
     bestsellers() {
       return this.$store.getters['getBestsellers'];
+    },
+    isLoading() {
+      return this.$store.getters['getIsLoading'];
     },
   },
   methods: {
@@ -107,13 +119,21 @@ export default {
     },
   },
   mounted() {
-    fetch(
-      'https://my-json-server.typicode.com/katanablaade/Coffee-back/bestsellers'
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        this.$store.dispatch('setBestsellersData', data);
-      });
+    try {
+      this.$store.isLoading = true;
+      fetch(
+        'https://my-json-server.typicode.com/katanablaade/Coffee-back/bestsellers'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setBestsellersData', data);
+        });
+      this.$store.isLoading = false;
+    } catch (error) {
+      throw new Error('Ошибка получения данных', error);
+    } finally {
+      this.$store.isLoading = false;
+    }
   },
 };
 </script>

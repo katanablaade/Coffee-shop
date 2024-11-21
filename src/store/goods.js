@@ -1,6 +1,6 @@
 const goods = {
   state: {
-    goods: [],
+    goods: null,
   },
   mutations: {
     setGoodsData(state, data) {

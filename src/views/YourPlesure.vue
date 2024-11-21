@@ -47,7 +47,7 @@
 
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="shop__wrapper">
+            <div v-if="goods" class="shop__wrapper">
               <card-item-component
                 v-for="card in goods"
                 :key="card.id"
@@ -55,6 +55,9 @@
                 :card="card"
                 @onNavigate="navigate"
               />
+            </div>
+            <div v-else class="qwe">
+              <spinner-component></spinner-component>
             </div>
           </div>
         </div>
@@ -67,11 +70,17 @@
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
 import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
+import SpinnerComponent from '@/components/SpinnerComponent.vue';
 
 import { navigate } from '../mixins/navigate';
 
 export default {
-  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
+  components: {
+    NavBarComponent,
+    CardItemComponent,
+    TitlleViewsComponent,
+    SpinnerComponent,
+  },
   data() {
     return {
       title: 'For your pleasure',
@@ -82,14 +91,27 @@ export default {
     goods() {
       return this.$store.getters['getGoods'];
     },
+    isLoading() {
+      return this.$store.getters['getIsLoading'];
+    },
   },
   mixins: [navigate],
   mounted() {
-    fetch('https://my-json-server.typicode.com/katanablaade/Coffee-back/goods')
-      .then((res) => res.json())
-      .then((data) => {
-        this.$store.dispatch('setGoodsData', data);
-      });
+    try {
+      this.$store.isLoading = true;
+      fetch(
+        'https://my-json-server.typicode.com/katanablaade/Coffee-back/goods'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setGoodsData', data);
+        });
+      this.$store.isLoading = false;
+    } catch (error) {
+      throw new Error('Ошибка получения данных', error);
+    } finally {
+      this.$store.isLoading = false;
+    }
   },
 };
 </script>

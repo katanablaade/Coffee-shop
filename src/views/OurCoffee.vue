@@ -76,7 +76,7 @@
         </div>
         <div class="row">
           <div class="col-lg-10 offset-lg-1">
-            <div class="shop__wrapper">
+            <div v-if="coffee" class="shop__wrapper">
               <card-item-component
                 v-for="card in coffee"
                 :key="card.id"
@@ -84,6 +84,9 @@
                 :card="card"
                 @onNavigate="navigate"
               />
+            </div>
+            <div v-else class="qwe">
+              <spinner-component></spinner-component>
             </div>
           </div>
         </div>
@@ -96,12 +99,18 @@
 import NavBarComponent from '@/components/NavBarComponent.vue';
 import CardItemComponent from '@/components/CardItemComponent.vue';
 import TitlleViewsComponent from '@/components/TitlleViewsComponent.vue';
+import SpinnerComponent from '@/components/SpinnerComponent.vue';
 
 import { navigate } from '../mixins/navigate';
 import debounce from 'debounce';
 
 export default {
-  components: { NavBarComponent, CardItemComponent, TitlleViewsComponent },
+  components: {
+    NavBarComponent,
+    CardItemComponent,
+    TitlleViewsComponent,
+    SpinnerComponent,
+  },
   data() {
     return {
       title: 'Our Coffee',
@@ -120,14 +129,27 @@ export default {
         return this.$store.getters['getSearchValue'];
       },
     },
+    isLoading() {
+      return this.$store.getters['getIsLoading'];
+    },
   },
   mixins: [navigate],
   mounted() {
-    fetch('https://my-json-server.typicode.com/katanablaade/Coffee-back/coffee')
-      .then((res) => res.json())
-      .then((data) => {
-        this.$store.dispatch('setCoffeeData', data);
-      });
+    try {
+      this.$store.isLoading = true;
+      fetch(
+        'https://my-json-server.typicode.com/katanablaade/Coffee-back/coffee'
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          this.$store.dispatch('setCoffeeData', data);
+        });
+      this.$store.isLoading = false;
+    } catch (error) {
+      throw new Error('Ошибка получения данных', error);
+    } finally {
+      this.$store.isLoading = false;
+    }
   },
   methods: {
     onSearch: debounce(function () {

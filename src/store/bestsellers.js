@@ -1,6 +1,6 @@
 const bestsellers = {
   state: {
-    bestsellers: [],
+    bestsellers: null,
   },
   mutations: {
     setBestsellersData(state, data) {
